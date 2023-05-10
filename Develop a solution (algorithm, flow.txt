@@ -1,0 +1,117 @@
+Develop a solution (algorithm, flowchart and pseudocode) to calculate a student’s grade average for one semester. 
+The letter grades should be entered and the grade average printed out.
+An A is equivalent to 4 grade points, a B is 3 grade points; a C is 2 grade points, a D is 1 grade point, and an F is zero grade points.
+
+Algorithm:
+1. Initialize variables total_grade_points and total_credit_hours to 0.
+2. Ask the user to enter the number of courses.
+3. For each course:
+   a. Ask the user to enter the letter grade.
+   b. Convert the letter grade to grade points based on the grading scale.
+   c. Ask the user to enter the credit hours for the course.
+   d. Multiply the grade points by the credit hours and add the result to the total_grade_points variable.
+   e. Add the credit hours to the total_credit_hours variable.
+4. Calculate the grade point average by dividing the total_grade_points by the total_credit_hours.
+5. Print the grade point average.
+
+Flowchart:
+```
+          +----------------+
+          | Start Program  |
+          +----------------+
+                   |
+                   v
+          +----------------+
+          | Set variables  |
+          +----------------+
+                   |
+                   v
+          +----------------+
+          | Get # of courses|
+          +----------------+
+                   |
+                   v
+          +----------------+
+          | For each course: |
+          |  -Get letter   |
+          |   grade        |
+          |  -Convert      |
+          |   to grade     |
+          |   points       |
+          |  -Get credit   |
+          |   hours        |
+          |  -Calculate    |
+          |   grade points |
+          |   * credit     |
+          |   hours        |
+          |  -Add result   |
+          |   to total     |
+          |   grade points |
+          |  -Add credit   |
+          |   hours to     |
+          |   total        |
+          +----------------+
+                   |
+                   v
+          +----------------+
+          | Calculate GPA  |
+          +----------------+
+                   |
+                   v
+          +----------------+
+          | Print GPA      |
+          +----------------+
+                   |
+                   v
+          +----------------+
+          | End Program    |
+          +----------------+
+          
+Pseudocode in C:
+#include <stdio.h>
+
+int main() {
+    int num_courses, credit_hours, total_credit_hours = 0;
+    float grade_points, total_grade_points = 0, gpa;
+    char letter_grade;
+    
+    printf("Enter the number of courses: ");
+    scanf("%d", &num_courses);
+    
+    for (int i = 1; i <= num_courses; i++) {
+        printf("Enter the letter grade for course %d: ", i);
+        scanf(" %c", &letter_grade);
+        
+        switch (letter_grade) {
+            case 'A':
+                grade_points = 4.0;
+                break;
+            case 'B':
+                grade_points = 3.0;
+                break;
+            case 'C':
+                grade_points = 2.0;
+                break;
+            case 'D':
+                grade_points = 1.0;
+                break;
+            default:
+                grade_points = 0.0;
+                break;
+        }
+        
+        printf("Enter the credit hours for course %d: ", i);
+        scanf("%d", &credit_hours);
+        
+        total_grade_points += grade_points * credit_hours;
+        total_credit_hours += credit_hours;
+    }
+    
+    gpa = total_grade_points / total_credit_hours;
+    
+    printf("Your GPA for this semester is %.2f", gpa);
+    
+    return 0;
+}
+```
+
