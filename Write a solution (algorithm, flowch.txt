@@ -1,0 +1,61 @@
+ Write a solution (algorithm, flowchart and pseudocode in C) to find the average miles per gallon on a car after six fillups at a gas station.
+Additional data kept included the number of gallons of gas at each fillup, the starting odometer reading, and the odometer reading at each fillup.
+  Algorithm:
+1. Initialize variables for total miles driven and total gallons of gas used to zero.
+2. Prompt the user to enter the starting odometer reading.
+3. For each of the six fillups:
+  a. Prompt the user to enter the odometer reading and the number of gallons of gas used.
+  b. Calculate the number of miles driven since the last fillup by subtracting the previous odometer reading from the current odometer reading.
+  c. Add the number of miles driven to the total miles driven variable.
+  d. Add the number of gallons of gas used to the total gallons of gas used variable.
+4. Calculate the average miles per gallon by dividing the total miles driven by the total gallons of gas used.
+5. Display the average miles per gallon to the user.
+
+Flowchart:
+```
+Start
+|
+|__ Initialize total miles and total gallons to zero
+|__ Prompt user for starting odometer reading
+|__ For each of the six fillups:
+        |__ Prompt user for current odometer reading and gallons of gas used
+        |__ Calculate miles driven since last fillup
+        |__ Add miles driven to total miles
+        |__ Add gallons of gas used to total gallons
+|__ Calculate average miles per gallon
+|__ Display average miles per gallon
+End
+```
+
+Pseudocode in C:
+```
+#include <stdio.h>
+
+int main() {
+  int start_odometer, current_odometer, miles_driven, total_miles = 0;
+  float gallons_used, total_gallons = 0, avg_mpg;
+
+  printf("Enter starting odometer reading: ");
+  scanf("%d", &start_odometer);
+
+  for (int i = 1; i <= 6; i++) {
+    printf("Fillup #%d\n", i);
+    printf("Enter odometer reading: ");
+    scanf("%d", &current_odometer);
+    printf("Enter gallons of gas used: ");
+    scanf("%f", &gallons_used);
+
+    miles_driven = current_odometer - start_odometer;
+    start_odometer = current_odometer;
+
+    total_miles += miles_driven;
+    total_gallons += gallons_used;
+  }
+
+  avg_mpg = total_miles / total_gallons;
+
+  printf("Average miles per gallon: %.2f\n", avg_mpg);
+
+  return 0;
+}
+```
